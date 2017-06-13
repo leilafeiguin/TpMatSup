@@ -1,0 +1,1 @@
+eleccion = menu ("Seleccione una opcion", "1.", "2.")

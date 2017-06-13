@@ -1,6 +1,44 @@
-% Primeras instalaciones
-pkg load control
-pkg load signal
+
+
+eleccionIngreso = menu ("Seleccione una opcion para ingresar la funcion transferencia", "1. Por coeficientes", "2. Por polos, ceros y ganancia")
+
+if(eleccionIngreso == 1)
+  coeficientesNumerador = input("Ingrese los coeficientes del numerador con el siguiente formato: [coef1, coef2, ..., coefX]: ");
+  coeficientesDenominador = input("Ingrese los coeficientes del denominador con el siguiente formato: [coef1, coef2, ..., coefX]: ");
+
+elseif(eleccionIngreso==2)
+  polos= input("Ingrese los polos con el siguiente formato: [polo1, polo2, ..., poloX]: ");
+  ceros = input("Ingrese los ceros con el siguiente formato: [cero1, cero2, ..., ceroX]: ");
+  ganancia = input ("Ingrese la ganancia: ");
+endif
+
+eleccionIngresoSegundoMenu = menu ("Seleccione que desea obtener", "1. Obtener la expresi贸n de la funci贸n transferencia", "2. Indicar Polos", "3. Indicar Ceros", "4. Marcar ganancia de la funci贸n", "5. Obtener expresi贸n con sus polos, ceros y ganancia", "6. Mostrar gr谩ficamente la distribuci贸n de polos y ceros", "7. Indicar estabilidad del sistema", "8. Obtener todas las caracter铆sticas de la funci贸n transferencia", "9. Ingresar una nueva funci贸n", "10. . Finalizar");
+
+switch(eleccionIngresoSegundoMenu)
+  case 1
+    obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador);
+  case 2
+    indicarPolos(coeficientesDenominador);
+   case 3
+    indicarCeros(coeficientesNumerador);
+   case 4
+    marcarGananciaDeFuncion(coeficientesNumerador, coeficientesDenominador);
+   case 5
+    obtenerExpresionConPolosCerosYGanancia(coeficientesNumerador, coeficientesDenominador);
+   case 6
+    mostrarGraficamentePolosYCeros(obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador));
+   case 7
+   case 8
+    obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador);
+    indicarPolos(coeficientesDenominador);
+    indicarCeros(coeficientesNumerador);
+    marcarGananciaDeFuncion(coeficientesNumerador, coeficientesDenominador);
+    obtenerExpresionConPolosCerosYGanancia(coeficientesNumerador, coeficientesDenominador);
+    mostrarGraficamentePolosYCeros(obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador));
+   case 9
+   case 10
+endswitch 
+
 
 function [funcionTransferencia] = obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador)
   funcionTransferencia = tf(coeficientesNumerador, coeficientesDenominador)
@@ -23,14 +61,16 @@ function [expresion, ceros, polos, ganancia] = obtenerExpresionConPolosCerosYGan
   [ceros, polos, ganancia]=tf2zp(coeficientesNumerador, coeficientesDenominador)
 endfunction  
 
-function = mostrarGraficamentePolosYCeros(funcionTransferencia)
+function [] = mostrarGraficamentePolosYCeros(funcionTransferencia)
   pzmap(funcionTransferencia)
   endfunction
+  
+
 
 %Falta:
 %7. Indicar estabilidad del sistema.
-%8. Obtener todas las caracter韘ticas de la funci髇 transferencia: Esta funcionalidad barre todos los puntos anteriores (1, 2, 3, 4, 5,6 y 7).
-%9. Ingresar una nueva funci髇.
+%8. Obtener todas las caracter锟絪ticas de la funci锟絥 transferencia: Esta funcionalidad barre todos los puntos anteriores (1, 2, 3, 4, 5,6 y 7).
+%9. Ingresar una nueva funci锟絥.
 %10. Finalizar.
 
   
