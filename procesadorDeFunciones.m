@@ -1,4 +1,6 @@
-
+% Primeras instalaciones
+pkg load control
+pkg load signal
 
 eleccionIngreso = menu ("Seleccione una opcion para ingresar la funcion transferencia", "1. Por coeficientes", "2. Por polos, ceros y ganancia")
 
@@ -12,34 +14,8 @@ elseif(eleccionIngreso==2)
   ganancia = input ("Ingrese la ganancia: ");
 endif
 
-eleccionIngresoSegundoMenu = menu ("Seleccione que desea obtener", "1. Obtener la expresión de la función transferencia", "2. Indicar Polos", "3. Indicar Ceros", "4. Marcar ganancia de la función", "5. Obtener expresión con sus polos, ceros y ganancia", "6. Mostrar gráficamente la distribución de polos y ceros", "7. Indicar estabilidad del sistema", "8. Obtener todas las características de la función transferencia", "9. Ingresar una nueva función", "10. . Finalizar");
 
-switch(eleccionIngresoSegundoMenu)
-  case 1
-    obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador);
-  case 2
-    indicarPolos(coeficientesDenominador);
-   case 3
-    indicarCeros(coeficientesNumerador);
-   case 4
-    marcarGananciaDeFuncion(coeficientesNumerador, coeficientesDenominador);
-   case 5
-    obtenerExpresionConPolosCerosYGanancia(coeficientesNumerador, coeficientesDenominador);
-   case 6
-    mostrarGraficamentePolosYCeros(obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador));
-   case 7
-   case 8
-    obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador);
-    indicarPolos(coeficientesDenominador);
-    indicarCeros(coeficientesNumerador);
-    marcarGananciaDeFuncion(coeficientesNumerador, coeficientesDenominador);
-    obtenerExpresionConPolosCerosYGanancia(coeficientesNumerador, coeficientesDenominador);
-    mostrarGraficamentePolosYCeros(obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador));
-   case 9
-   case 10
-endswitch 
-
-
+%Funciones
 function [funcionTransferencia] = obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador)
   funcionTransferencia = tf(coeficientesNumerador, coeficientesDenominador)
   endfunction
@@ -72,6 +48,39 @@ function [] = mostrarGraficamentePolosYCeros(funcionTransferencia)
 %8. Obtener todas las caracter�sticas de la funci�n transferencia: Esta funcionalidad barre todos los puntos anteriores (1, 2, 3, 4, 5,6 y 7).
 %9. Ingresar una nueva funci�n.
 %10. Finalizar.
+
+
+
+
+eleccionIngresoSegundoMenu = menu ("Seleccione que desea obtener", "1. Obtener la expresión de la función transferencia", "2. Indicar Polos", "3. Indicar Ceros", "4. Marcar ganancia de la función", "5. Obtener expresión con sus polos, ceros y ganancia", "6. Mostrar gráficamente la distribución de polos y ceros", "7. Indicar estabilidad del sistema", "8. Obtener todas las características de la función transferencia", "9. Ingresar una nueva función", "10. . Finalizar");
+
+switch(eleccionIngresoSegundoMenu)
+  case 1
+    obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador);
+  case 2
+    indicarPolos(coeficientesDenominador);
+   case 3
+    indicarCeros(coeficientesNumerador);
+   case 4
+    marcarGananciaDeFuncion(coeficientesNumerador, coeficientesDenominador);
+   case 5
+    obtenerExpresionConPolosCerosYGanancia(coeficientesNumerador, coeficientesDenominador);
+   case 6
+    mostrarGraficamentePolosYCeros(obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador));
+   case 7
+   case 8
+    obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador);
+    indicarPolos(coeficientesDenominador);
+    indicarCeros(coeficientesNumerador);
+    marcarGananciaDeFuncion(coeficientesNumerador, coeficientesDenominador);
+    obtenerExpresionConPolosCerosYGanancia(coeficientesNumerador, coeficientesDenominador);
+    mostrarGraficamentePolosYCeros(obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador));
+   case 9
+   case 10
+endswitch 
+
+
+
 
   
   
