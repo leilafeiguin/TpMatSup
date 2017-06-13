@@ -41,10 +41,34 @@ function [] = mostrarGraficamentePolosYCeros(funcionTransferencia)
   pzmap(funcionTransferencia)
   endfunction
   
+function [estabilidad] = indicarEstabilidadDelSistema(polos, ceros)
+  polosPositivos = 0;
+  polosNulos = 0;
+  polosReales = setdiff(polos, ceros);
+  cerosReales = setdiff(ceros, polos);
 
+   for i = 1:length(polosReales)
+        if (real(polosReales(i)) > 0)
+          polosPositivos++;
+        endif
+        if (real(polosReales(i)) == 0)
+          polosNulos++;
+        endif
+      endfor
+      
+      if (polosPositivos != 0)
+        estabilidad = "Inestable";
+      elseif (polosNulos == 0)
+        estabilidad = "Estable";
+      elseif (polosNulos == 1)
+        estabilidad = "Marginalmente estable";
+      elseif (polosNulos > 1)
+        estabilidad = "Inesatble";
+      endif
+  endfunction
 
 %Falta:
-%7. Indicar estabilidad del sistema.
+%7. Que muestre en la interfaz indicar estabilidad del sistema.
 %8. Obtener todas las caracter�sticas de la funci�n transferencia: Esta funcionalidad barre todos los puntos anteriores (1, 2, 3, 4, 5,6 y 7).
 %9. Ingresar una nueva funci�n.
 %10. Finalizar.
@@ -68,6 +92,7 @@ switch(eleccionIngresoSegundoMenu)
    case 6
     mostrarGraficamentePolosYCeros(obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador));
    case 7
+     indicarEstabilidadDelSistema(polos, ceros);
    case 8
     obtenerExpresionFuncionTransferencia(coeficientesNumerador, coeficientesDenominador);
     indicarPolos(coeficientesDenominador);
