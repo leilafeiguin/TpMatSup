@@ -24,6 +24,9 @@ function [] = verificarMenu(eleccionIngreso)
     polos= input("Ingrese los polos con el siguiente formato: [polo1, polo2, ..., poloX]: ");
     ceros = input("Ingrese los ceros con el siguiente formato: [cero1, cero2, ..., ceroX]: ");
     ganancia = input ("Ingrese la ganancia: ");
+    expresion = zpk(ceros,polos,ganancia);
+    coeficientesNumerador = expresion.num{1}
+    coeficientesDenominador = expresion.den{1}
   endif
   abrirSegundoMenu();
 endfunction
