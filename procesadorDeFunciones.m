@@ -79,6 +79,7 @@ function [] = verificarSegundoMenu(eleccionIngresoSegundoMenu)
     abrirMenu();
    case 10
     disp('====== FIN ======');
+    disp('');
     close();
 endswitch 
 endfunction
@@ -132,6 +133,8 @@ function [estabilidad] = indicarEstabilidadDelSistema(polos, ceros)
       elseif (polosNulos > 1)
         estabilidad = "Inesatble";
       endif
+      est = strcat ("El sistema es: ", estabilidad);
+      disp(est);
 endfunction
 
 %Falta:
